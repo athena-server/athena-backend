@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "courses",
+  "info": {
+    "singularName": "course",
+    "pluralName": "courses",
+    "displayName": "Course",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "courseId": {
+      "type": "string"
+    },
+    "courseTitle": {
+      "type": "string"
+    },
+    "course_reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course-review.course-review",
+      "mappedBy": "courseId"
+    }
+  }
+}
