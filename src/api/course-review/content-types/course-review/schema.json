@@ -26,6 +26,12 @@
       "max": 5,
       "min": 0,
       "required": true
+    },
+    "reviewed_in_sem": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::semester.semester",
+      "inversedBy": "reviews"
     }
   }
 }
