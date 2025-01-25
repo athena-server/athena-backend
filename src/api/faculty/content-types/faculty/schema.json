@@ -4,7 +4,8 @@
   "info": {
     "singularName": "faculty",
     "pluralName": "faculties",
-    "displayName": "Faculty"
+    "displayName": "Faculty",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,7 +17,7 @@
       "relation": "oneToMany",
       "target": "api::info.info"
     },
-    "previous_facutlies": {
+    "previous_faculties": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::info.info"

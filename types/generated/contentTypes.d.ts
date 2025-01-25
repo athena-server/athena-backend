@@ -455,6 +455,10 @@ export interface ApiCourseReviewCourseReview
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    reviewed_in_sem: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::semester.semester'
+    >;
     reviewText: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -499,6 +503,7 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
 export interface ApiFacultyFaculty extends Struct.SingleTypeSchema {
   collectionName: 'faculties';
   info: {
+    description: '';
     displayName: 'Faculty';
     pluralName: 'faculties';
     singularName: 'faculty';
@@ -517,7 +522,7 @@ export interface ApiFacultyFaculty extends Struct.SingleTypeSchema {
       'api::faculty.faculty'
     > &
       Schema.Attribute.Private;
-    previous_facutlies: Schema.Attribute.Relation<
+    previous_faculties: Schema.Attribute.Relation<
       'oneToMany',
       'api::info.info'
     >;
@@ -583,6 +588,38 @@ export interface ApiInfoInfo extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     socials: Schema.Attribute.Component<'team.socials', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSemesterSemester extends Struct.CollectionTypeSchema {
+  collectionName: 'semesters';
+  info: {
+    displayName: 'Semester';
+    pluralName: 'semesters';
+    singularName: 'semester';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::semester.semester'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    reviews: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::course-review.course-review'
+    >;
+    semesterName: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1160,6 +1197,7 @@ declare module '@strapi/strapi' {
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::global.global': ApiGlobalGlobal;
       'api::info.info': ApiInfoInfo;
+      'api::semester.semester': ApiSemesterSemester;
       'api::staff.staff': ApiStaffStaff;
       'api::web-team.web-team': ApiWebTeamWebTeam;
       'plugin::content-releases.release': PluginContentReleasesRelease;

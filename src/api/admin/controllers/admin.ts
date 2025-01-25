@@ -10,10 +10,18 @@ export default factories.createCoreController('api::admin.admin', ({ strapi }) =
             ...ctx.query,
             populate: {
                 current_admins: {
-                    populate: ['image', 'socials'],
+                    populate: {
+                        admins: {
+                            populate: ['image', 'socials'],
+                        }
+                    }
                 },
                 previous_admins: {
-                    populate: ['image', 'socials'],
+                    populate: {
+                        admins: {
+                            populate: ['image', 'socials'],
+                        }
+                    }
                 }
             }
         }
@@ -26,10 +34,18 @@ export default factories.createCoreController('api::admin.admin', ({ strapi }) =
             ...ctx.query,
             populate: {
                 current_admins: {
-                    populate: ['image', 'socials'],
+                    populate: {
+                        admins: {
+                            populate: ['image', 'socials'],
+                        }
+                    }
                 },
                 previous_admins: {
-                    populate: ['image', 'socials'],
+                    populate: {
+                        admins: {
+                            populate: ['image', 'socials'],
+                        }
+                    }
                 }
             }
         }
