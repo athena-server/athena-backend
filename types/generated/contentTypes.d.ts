@@ -500,6 +500,37 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFacilityFacility extends Struct.SingleTypeSchema {
+  collectionName: 'facilities';
+  info: {
+    displayName: 'Facility';
+    pluralName: 'facilities';
+    singularName: 'facility';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::facility.facility'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFacultyFaculty extends Struct.SingleTypeSchema {
   collectionName: 'faculties';
   info: {
@@ -1194,6 +1225,7 @@ declare module '@strapi/strapi' {
       'api::batch.batch': ApiBatchBatch;
       'api::course-review.course-review': ApiCourseReviewCourseReview;
       'api::course.course': ApiCourseCourse;
+      'api::facility.facility': ApiFacilityFacility;
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::global.global': ApiGlobalGlobal;
       'api::info.info': ApiInfoInfo;
