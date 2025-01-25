@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "faculties",
+  "info": {
+    "singularName": "faculty",
+    "pluralName": "faculties",
+    "displayName": "Faculty"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "current_faculties": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::info.info"
+    },
+    "previous_facutlies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::info.info"
+    }
+  }
+}

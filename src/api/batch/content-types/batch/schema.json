@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "batches",
+  "info": {
+    "singularName": "batch",
+    "pluralName": "batches",
+    "displayName": "Batch",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "batchCode": {
+      "type": "string"
+    },
+    "admins": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::info.info",
+      "mappedBy": "batch"
+    }
+  }
+}

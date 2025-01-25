@@ -62,6 +62,18 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface TeamSocials extends Struct.ComponentSchema {
+  collectionName: 'components_team_socials';
+  info: {
+    displayName: 'socials';
+  };
+  attributes: {
+    email: Schema.Attribute.Email;
+    github: Schema.Attribute.String;
+    linkedin: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -70,6 +82,7 @@ declare module '@strapi/strapi' {
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
+      'team.socials': TeamSocials;
     }
   }
 }

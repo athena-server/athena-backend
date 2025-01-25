@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "information",
+  "info": {
+    "singularName": "info",
+    "pluralName": "information",
+    "displayName": "Information",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "batch": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::batch.batch",
+      "inversedBy": "admins"
+    },
+    "socials": {
+      "type": "component",
+      "repeatable": false,
+      "component": "team.socials"
+    }
+  }
+}

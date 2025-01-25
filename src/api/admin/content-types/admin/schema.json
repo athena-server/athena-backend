@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "admins",
+  "info": {
+    "singularName": "admin",
+    "pluralName": "admins",
+    "displayName": "Admins"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "current_admins": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::batch.batch"
+    },
+    "previous_admins": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::batch.batch"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "web_teams",
+  "info": {
+    "singularName": "web-team",
+    "pluralName": "web-teams",
+    "displayName": "WebTeam"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "design": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::info.info"
+    },
+    "seniors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::info.info"
+    },
+    "juniors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::info.info"
+    }
+  }
+}
