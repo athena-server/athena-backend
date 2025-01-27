@@ -625,6 +625,34 @@ export interface ApiInfoInfo extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiIsSslOpenIsSslOpen extends Struct.SingleTypeSchema {
+  collectionName: 'is_ssl_opens';
+  info: {
+    displayName: 'isSslOpen';
+    pluralName: 'is-ssl-opens';
+    singularName: 'is-ssl-open';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    current_status: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::is-ssl-open.is-ssl-open'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSemesterSemester extends Struct.CollectionTypeSchema {
   collectionName: 'semesters';
   info: {
@@ -1229,6 +1257,7 @@ declare module '@strapi/strapi' {
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::global.global': ApiGlobalGlobal;
       'api::info.info': ApiInfoInfo;
+      'api::is-ssl-open.is-ssl-open': ApiIsSslOpenIsSslOpen;
       'api::semester.semester': ApiSemesterSemester;
       'api::staff.staff': ApiStaffStaff;
       'api::web-team.web-team': ApiWebTeamWebTeam;

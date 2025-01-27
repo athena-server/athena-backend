@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "is_ssl_opens",
+  "info": {
+    "singularName": "is-ssl-open",
+    "pluralName": "is-ssl-opens",
+    "displayName": "isSslOpen"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "current_status": {
+      "type": "boolean"
+    }
+  }
+}
