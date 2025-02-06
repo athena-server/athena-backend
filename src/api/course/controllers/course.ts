@@ -32,6 +32,7 @@ export default factories.createCoreController('api::course.course', ({ strapi })
                 pagination : {
                     limit : -1, //disable pagination
                 },
+
             }
 
             ctx.query = query;
@@ -52,7 +53,14 @@ export default factories.createCoreController('api::course.course', ({ strapi })
                     return course;
                 })
             );
-
+            enhancedCourses.sort( (x,y) => {
+                if(x.reviewCount > y.reviewCount)
+                    return -1;
+                else if(x.reviewCount < y.reviewCount)
+                    return 1;
+                else 
+                    return 0;
+            });
             courses.data = enhancedCourses;
             return courses;
         }
