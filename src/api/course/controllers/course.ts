@@ -20,7 +20,6 @@ export default factories.createCoreController('api::course.course', ({ strapi })
     },
     async find(ctx) {
         const filters = ctx.query.filters;
-        const courseCount =  await strapi.entityService.count('api::course.course');
         if (filters) {
             const query = {
                 ...ctx.query,
@@ -31,7 +30,7 @@ export default factories.createCoreController('api::course.course', ({ strapi })
                     }
                 },
                 pagination : {
-                    limit : -1,
+                    limit : -1, //disable pagination
                 },
             }
 
@@ -39,7 +38,7 @@ export default factories.createCoreController('api::course.course', ({ strapi })
             return super.find(ctx);
         }
         else {
-            ctx.query.pagination = {limit: -1}; 
+            ctx.query.pagination = {limit: -1}; //disable pagination
             const courses = await super.find(ctx);
 
             const enhancedCourses = await Promise.all(
