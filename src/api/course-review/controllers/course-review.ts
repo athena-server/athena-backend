@@ -9,6 +9,7 @@ export default factories.createCoreController('api::course-review.course-review'
         ctx.query = {
             ...ctx.query,
             populate: ['courseId', 'reviewed_in_sem'],
+            pagination: {limit : -1},
         }
         return super.find(ctx);
     },
