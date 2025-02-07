@@ -23,17 +23,23 @@ export default factories.createCoreController('api::course.course', ({ strapi })
         if (filters) {
             const query = {
                 ...ctx.query,
+                
                 populate: {
                     course_reviews: {
                         populate: ['reviewed_in_sem'],
                     }
                 },
+                pagination : {
+                    limit : -1, //disable pagination
+                },
+
             }
 
             ctx.query = query;
             return super.find(ctx);
         }
         else {
+            ctx.query.pagination = {limit: -1}; //disable pagination
             const courses = await super.find(ctx);
 
             const enhancedCourses = await Promise.all(
@@ -47,7 +53,14 @@ export default factories.createCoreController('api::course.course', ({ strapi })
                     return course;
                 })
             );
-
+            enhancedCourses.sort( (x,y) => {
+                if(x.reviewCount > y.reviewCount)
+                    return -1;
+                else if(x.reviewCount < y.reviewCount)
+                    return 1;
+                else 
+                    return 0;
+            });
             courses.data = enhancedCourses;
             return courses;
         }
