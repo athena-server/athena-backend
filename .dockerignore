@@ -1,0 +1,64 @@
+############################
+# Dependencies
+############################
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+############################
+# Databases & Persistence
+############################
+# Very important: You mount these as volumes. Do not bake them into the image.
+sqlite-db/
+.tmp/
+public/uploads/
+*.sqlite
+*.sql
+
+############################
+# Build & Cache
+############################
+build/
+dist/
+.cache/
+.nx/
+.tsbuildinfo
+.eslintcache
+schema.graphql
+
+############################
+# Environment & Secrets
+############################
+.env
+.env*
+*.pem
+CLAUDE.local.md
+
+############################
+# OS & IDE Metadata
+############################
+.DS_Store
+.idea/
+.vscode/
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+############################
+# Git
+############################
+.git/
+.gitignore
+
+############################
+# Tests & Playwright
+############################
+coverage/
+playwright-report/
+test-results/
+test-apps/
